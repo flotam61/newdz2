@@ -17,11 +17,16 @@ def prepare_dict(file_name: str) -> dict:
 
 result_dict = prepare_dict("recept.txt")
 
-def get_shop_list_by_dishes(dishes, person_count):
-    for key in result_dict[dishes]:
-        key["number"] *= person_count
-        print(key)
 
-get_shop_list_by_dishes('Запеченный картофель', 2)
+def get_shop_list_by_dishes(dishes, person_count):
+
+    for dish in dishes:
+        for key in result_dict[dish]:
+            list_item = dict(key)
+            list_item["number"] *= person_count
+            print(list_item)
+
+
+get_shop_list_by_dishes(['Запеченный картофель', "Омлет"], 5)
 
 
