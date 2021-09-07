@@ -19,14 +19,18 @@ result_dict = prepare_dict("recept.txt")
 
 
 def get_shop_list_by_dishes(dishes, person_count):
-
+    mylist = {}
     for dish in dishes:
         for key in result_dict[dish]:
             list_item = dict(key)
             list_item["number"] *= person_count
-            print(list_item)
+            if list_item['name'] not in mylist:
+                mylist[list_item['name']] = list_item
+            else:
+                mylist[list_item['name']]['number'] += list_item['number']
+    return print(mylist)
 
 
-get_shop_list_by_dishes(['Запеченный картофель', "Омлет"], 5)
+get_shop_list_by_dishes(["Омлет", "Омлет"], 2)
 
 
